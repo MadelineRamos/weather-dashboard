@@ -49,11 +49,27 @@
       </div>
 
       <div class="col-12 col-md-8">
-        <h2 class="subtitle"><span id="repo-search-term"></span></h2>
-        <div id="weather-container" class="list-group"></div>
+          <div id="weather-container" class="list-group">
+            <div class="city-card">
+              <h1 id="cityHeader">Header</h1>
+              <h3 id="temp">Temp</h3>
+              <h3 id="wind">Wind</h3>
+              <h3 id="humidity">Humidity</h3>
+              <div class="uv-index">
+                <h3 id="uvIndex">Uv Index</h3>
+                <p id="uvNumber" class="favorable"></p>
+              </div>
+            </div>
+          </div>
+          <div id="weather-container-cards" class="list-group">
+            <div id="forecast" class="forecast-card">
+              <h2>5-Day Forecast</h2>
+              </div>
+            </div>
+          </div>
       </div>
     </main>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

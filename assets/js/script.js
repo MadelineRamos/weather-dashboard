@@ -131,12 +131,13 @@ var latLon = function (event) {
                 weatherContainer.textContent = 'City not found.';
                 return;
             } else {
+                cityName = data[0].name;
                 var lat = data[0].lat;
                 lat = lat.toFixed(2);
                 var lon = data[0].lon;
                 lon = lon.toFixed(2);
 
-                weatherData(lat, lon);
+                weatherData(cityName, lat, lon);
             }
         });
       } else {
@@ -145,10 +146,10 @@ var latLon = function (event) {
     });
 };
 
-var weatherData = function (lat, lon) {
+var weatherData = function (cityName, lat, lon) {
     console.log(lat);
     console.log(lon);
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=9183060bbc0174b45453d35c12bc558d';
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&units=imperial&exclude=minutely,hourly,alerts&appid=9183060bbc0174b45453d35c12bc558d';
     console.log(apiUrl);
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -158,22 +159,63 @@ var weatherData = function (lat, lon) {
                 weatherContainer.textContent = 'City not found.';
                 return;
             } else {
-                var currentTime = data[0].current.dt;
+                var fullDate = new Date()
+                var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+                var currentTime = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+                var temp = data[0].current.temp
                 var wind = data[0].current.wind_speed;
                 var humidity = data[0].current.humidity;
                 var uvIndex = data[0].current.uvi;
-                console.log(currentTime);
-                console.log(wind);
-                console.log(humidity);
-                console.log(uvIndex);
+                cityCard(cityName, currentTime, temp, wind, humidity, uvIndex);
+
+                var daily = data[0].daily;
+                forecast(daily, currentTime);
             }
         });
       } else {
         alert('Error: ' + response.statusText);
+        var fullDate = new Date()
+        var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+        var currentTime = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+        var temp = "284.07";
+        var wind = "6";
+        var humidity = "62";
+        var uvIndex = "0.89";
+        cityCard(cityName, currentTime, temp, wind, humidity, uvIndex);
       }
     });
 };
 
+var cityCard = function(cityName, time, temp, wind, humidity, uv) {
+
+  var cityHeader = cityName + " (" + time + ")";
+  temp = "Temp: " + temp + "F";
+  wind = "Wind: " + wind + " MPH";
+  humidity = "Humidity: " + humidity + " %";
+  console.log(cityHeader);
+  $("#cityHeader").text(cityHeader);
+  $("#temp").text(temp);
+  $("#wind").text(wind);
+  $("#humidity").text(humidity);
+  $("#uvIndex").text("UV Index: ")
+  $("#uvNumber").text(uv);
+}
+
+var forecast = function(daily, currentTime) {
+  var forecastCard = $("#forecast");
+  for (var i = 0; i < 5; i++) {
+    // append function to append the cards to the page for the 5 day forecast into the future
+    // each time we loop we have to get a substring between the index of the first / and the second / to get the day
+    // then increment the value  by one - function that turns a string into an integer + 1 then turn it back into a sting
+    // then insert the value back into the main string
+
+    // for each card we have to get the daily at the i index then get the icon, temp, wind, humidity
+    // figure how to make columns for the cards to line up together
+    // then have to append each value to the initial card
+
+    // lastly have to figure out how to save the data of the users input into the buttons under the search button
+  }
+}
 
 
 
