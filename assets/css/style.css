@@ -110,7 +110,7 @@
     padding: 1.5%;
     border-radius: var(--border-radius);
     background-color: var(--light-dark);
-    color: var(--primary);
+    color: black;
     text-decoration: none;
   }
 
@@ -140,14 +140,34 @@
 .city-card {
   border: 2px solid black;
   border-radius: var(--border-radius);
+  color: black;
 }
 
 .forecast-card {
   border: 2px solid black;
   border-radius: var(--border-radius);
+  font-size: 20px;
 }
 
+.forecast-card h2 {
+  color: black;
+}
 
+#cityHeader {
+  color: black;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+#temp, #wind, #humidity, #uvIndex {
+  color: black;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.col {
+  background-color: aqua;
+}
 
   /* CARDS */
   .card {
