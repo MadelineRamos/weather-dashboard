@@ -4,7 +4,7 @@
 
 ---
 
-Add link here
+https://madelineramos.github.io/weather-dashboard/
 
 ## Description:
 
@@ -27,4 +27,4 @@ This application is a weather dashboard. It works when a user inputs a city in w
 
 ---
 
-Add image here
+![Weather-Dashboard](https://user-images.githubusercontent.com/108437661/188993481-eeb33499-eac0-4583-a242-7441ec686b45.png)
