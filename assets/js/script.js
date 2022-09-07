@@ -146,9 +146,13 @@ window.onload = function() {
 }
 
 $(document).ready(function(){
-  $("button").click(function() {
+  $(document).on("click", "button", function() {
     if (this.id != "searchBtn") {
       var nameOfCity = localStorage.getItem(this.id);
+      console.log(nameOfCity);
+      if (nameOfCity == null) {
+        nameOfCity = this.innerText;
+      }
       latLon(nameOfCity);
     }
   });
