@@ -10,7 +10,7 @@ var valueOfForm = function (event) {
 
 var latLon = function (cityName) {
   console.log(cityName);
-  var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=906a2e86d71a0fa20075bc84b30f3d37";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=906a2e86d71a0fa20075bc84b30f3d37";
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -20,7 +20,7 @@ var latLon = function (cityName) {
             return;
           } else {
               console.log(data);
-              cityName = data[0].name;
+              cityName = data.city.name;
               if (localStorage.getItem(cityName.replaceAll(" ", "")) == null) {
                 var cityNameKey = cityName.replaceAll(" ", "");
                 console.log(cityNameKey);
@@ -31,11 +31,13 @@ var latLon = function (cityName) {
                 );
               }
 
-              var lat = data[0].lat;
+              var lat = data.city.coord.lat;
               lat = lat.toFixed(2);
-              var lon = data[0].lon;
+              var lon = data.city.coord.lon;
               lon = lon.toFixed(2);
+              console.log(cityName);
               console.log(lat);
+              console.log(lon);
               weatherData(cityName, lat, lon);
           }
       });
@@ -85,7 +87,7 @@ var cityCard = function(cityName, time, temp, wind, humidity, uv, icon) {
   $("#wind").text(wind);
   $("#humidity").text(humidity);
   $("#uvIndex").text("UV Index: ");
-  $("#uvNumber").text(uv);
+  $("#uvNumber").text(Math.abs(uv));
   if (uv < 2) {
     $("#uvNumber").attr("class", "favorable");
   } else if (uv < 5) {
