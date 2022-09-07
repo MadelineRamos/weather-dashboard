@@ -10,7 +10,7 @@ var valueOfForm = function (event) {
 
 var latLon = function (cityName) {
   console.log(cityName);
-  var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=906a2e86d71a0fa20075bc84b30f3d37";
+  var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=906a2e86d71a0fa20075bc84b30f3d37";
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
