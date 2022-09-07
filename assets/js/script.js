@@ -95,7 +95,7 @@ var cityCard = function(cityName, time, temp, wind, humidity, uv, icon) {
   } else {
     $("#uvNumber").attr("class", "severe");
   }
-  $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+  $("#weather-icon").attr("src", "https://openweathermap.org/img/wn/" + icon + ".png");
 }
 
 var forecast = function(data, currentTime) {
