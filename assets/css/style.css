@@ -92,12 +92,10 @@
     max-width: 75%;
   }
 
-  .app-title {
+  .text-center {
     font-size: 3rem;
-    background-color: var(--primary);
     padding: 0 10px;
-    display: inline-block;
-    border-radius: var(--border-radius);
+    color: white;
   }
 
   .list-group {
@@ -118,39 +116,32 @@
     background-color: var(--dark);
   }
 
-  .status-icon {
-    padding: 2px 5px;
-    margin: 0 5px;
-    background-color: rgba(255,255,255, 1);
-    border-radius: var(--border-radius);
-  }
-
-  .icon-danger {
-    color: rgb(255, 70, 70);
-  }
-
-  .icon-success {
-    color: rgb(29, 153, 255);
-  }
-
 .uv-index {
   display: flex;
+}
+
+#uvIndex {
+  margin-right: 4px;
 }
 
 .city-card {
   border: 2px solid black;
   border-radius: var(--border-radius);
   color: black;
+  padding-left: 5px;
+}
+
+.city-card h3 {
+  font-weight: 400;
 }
 
 .forecast-card {
-  border: 2px solid black;
-  border-radius: var(--border-radius);
   font-size: 20px;
 }
 
 .forecast-card h2 {
   color: black;
+  margin-bottom: 8px;
 }
 
 #cityHeader {
@@ -159,14 +150,63 @@
   margin-bottom: 10px;
 }
 
-#temp, #wind, #humidity, #uvIndex {
+#temp, #wind, #humidity, #uvIndex, #uvNumber {
   color: black;
   font-size: 20px;
   margin-bottom: 20px;
 }
 
+#weather-container, #weather-container-cards {
+  display: none;
+}
+
 .col {
-  background-color: aqua;
+  background-color: rgb(49, 97, 168);
+  padding: 0;
+  margin: 0 10px;
+  color: white;
+}
+
+.col h4 {
+  color: white;
+  margin: 5px;
+}
+
+.col p {
+  color: white;
+  margin: 5px;
+  padding: 4px 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.favorable {
+  background-color: green;
+  padding: 0 3px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+}
+
+.moderate {
+  background-color: rgb(216, 165, 69);
+  padding: 0 3px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+}
+
+.severe {
+  background-color: rgb(180, 12, 12);
+  padding: 0 3px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+}
+
+#uvNumber {
+  font-size: 15px;
+  color: white;
+  padding-top: 2px;
 }
 
   /* CARDS */
