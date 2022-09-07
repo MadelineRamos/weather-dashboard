@@ -86,6 +86,13 @@ var cityCard = function(cityName, time, temp, wind, humidity, uv, icon) {
   $("#humidity").text(humidity);
   $("#uvIndex").text("UV Index: ");
   $("#uvNumber").text(uv);
+  if (uv < 2) {
+    $("#uvNumber").attr("class", "favorable");
+  } else if (uv < 5) {
+    $("#uvNumber").attr("class", "moderate");
+  } else {
+    $("#uvNumber").attr("class", "severe");
+  }
   $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
 }
 
@@ -138,7 +145,6 @@ window.onload = function() {
 
 $(document).ready(function(){
   $("button").click(function() {
-    console.log(this.id);
     if (this.id != "searchBtn") {
       var nameOfCity = localStorage.getItem(this.id);
       latLon(nameOfCity);
